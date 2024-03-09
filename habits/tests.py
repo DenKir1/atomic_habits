@@ -47,6 +47,16 @@ class HabitListTestCase(APITestCase):
             status.HTTP_200_OK
         )
 
+    def test_get_habit(self):
+        """Тестирование вывода одной привычки"""
+
+        response = self.client.get(reverse('habits:habit_detail', kwargs={'pk': self.private_habit.id}))
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK
+        )
+
     def test_get_public_habits_list(self):
         """Тестирование вывода списка публичных привычек"""
 
